@@ -87,13 +87,37 @@ getMalesFemales();
 
 // padaryti su reduce ta pati
 
+// const getMalesFemalesReduce = students.sort((a, b) => {
+//   return a.gender > b.gender ? 1 : -1;
+// });
+
 const getMalesFemalesReduce = students.reduce(
-  (resObj, personObj) => {
-    // logika
-    // rezultatai
+  (persObj, currentObj) => {
+    if (currentObj.gender === "male") {
+      persObj.vyrai++;
+    } else {
+      persObj.moterys++;
+    }
+    return persObj;
   },
   {
     vyrai: 0,
     moterys: 0,
   }
 );
+
+console.log("getMalesFemalesReduce ===", getMalesFemalesReduce);
+
+const getMalesFemalesReduceArr = students.reduce(
+  (perArr, currentObj) => {
+    if (currentObj.gender === "male") {
+      perArr[0]++;
+    } else {
+      perArr[1]++;
+    }
+    return perArr;
+  },
+  [0, 0]
+);
+
+console.log("getMalesFemalesReduceArr ===", getMalesFemalesReduceArr);
